@@ -1,0 +1,113 @@
+<resources>
+    <string name="accelerometer">Accelerômetro </string>
+    <string name="accelerometer_desc"> O acelerômetro determina a aceleração aplicada sobre o dispositivo, por meio da aferição das forças aplicadas sobre o próprio sensor.</string>
+    <string name="action_settings">Configurações</string>
+    <string name="ambient_temperature">Temperatura ambiente </string>
+    <string name="ambient_temperature_desc">Este sensor monitora a temperatura ambiente. </string>
+    <string name="available_sensors">Esses são os sensores disponíveis no seu dispositivo, de acordo com o fabricante. Nem todos os sensores listados possuem necessariamente
+        documentação oficial Android de como utilizá-los. Nesses casos, deve-se recorrer à própria documentação do fabricante para saber mais sobre o sensor. Alguns sensores
+        também podem não ter seus valores mostrados, por conta de eles serem calculados via software, usando valores de um ou mais sensores do dispositivo combinados. Selecione
+        o sensor desejado na lista para visualizar detalhes. </string>
+    <string name="app_name">Android Client</string>
+    <string name="camera_app">Aplicação de câmera padrão </string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="celsius">°C</string>
+    <string name="custom_camera_app">Aplicação de câmera personalizada</string>
+    <string name="cm">cm </string>
+    <string name="cont_location_app">Serviço de localização contínua </string>
+    <string name="description_info">Info</string>
+    <string name="game_rotation">Game rotation </string>
+    <string name="game_rotation_desc">Este sensor é idênctico ao sensor de rotação, porém não utiliza o valor do campo magnético da Terra. Por conta disso, o eixo Y aqui não
+        aponta para o norte, mas para alguma outra direção. </string>
+    <string name="geomagnetic_rotation">Rotação geomagnética </string>
+    <string name="geomagnetic_rotation_desc">Este sensor é similar ao sensor de rotação, mas usa o magnetômetro ao invés do giroscópio. A acurácia desse sensor é menor que a do
+        sensor de rotação, porém este consome menos bateria. Use esse sensor se você deseja coletar informação no plano de fundo do aparelho, sem onerar  a bateria. </string>
+    <string name="getFullImage">Tirar foto completa</string>
+    <string name="getThumbnail">Tirar miniatura</string>
+    <string name="go">Ir </string>
+    <string name="glance_gesture">Gesto de acenar </string>
+    <string name="gravity_sensor">Sensor de gravidade </string>
+    <string name="gravity_sensor_desc">Os valores tridimensionais desse sensor indicam a direção e a magnitude da gravidade. Normalmente, usa-se esse sensor para
+        determinar a orientação do dispositivo no espaço. Quando o dispositivo está em repouso, os valores desse sensor são os mesmos obtidos pelo acelerômetro.</string>
+    <string name="gyroscope">Giroscópio </string>
+    <string name="gyroscope_desc">O giroscópio afere a rotação em rad/s em torno dos eixos x, y e z.</string>
+    <string name="gyroscope_uncalibrated">Gyroscópio sem calibração </string>
+    <string name="gyroscope_uncalibrated_desc">Similar ao giroscópio, mas não realiza compensação de giro-drift aos valores de rotação.</string>
+    <string name="heart_rate">Frequência cardíaca </string>
+    <string name="heart_rate_desc">Afere a frequência cardíaca </string>
+    <string name="humidity_sensor">Sensor de umidade. </string>
+    <string name="humidity_sensor_desc">Este sensor afere a umidade relativa do ar. </string>
+    <string name="intro_msg">Olá. Bem-vindo ao aplicativo-exemplo do framework. Este aplicativo visa mostrar algumas das funcionalidades possíveis de serem reaizadas no
+        framework de desenvolvimento. A classe inicial é a MainActivity. O framework segue uma estrutura de diretórios que separa os sensores pelo tipo (ambiente, localização e
+        movimento) e pelos demais hardwares (camera, microfone). Suporta o uso dos principais sensores, da câmera, do microfone para gravação/ reprodução de aúdio e também para
+        reconhecimento de fala e de serviços de localização online, que normalmente usam o gps para obterem maior precisão. As permissões do arquivo Manifest são de todo o
+        framework, e devem ser removidas quando não utilizadas na aplicação. O mesmo ocorre com atributos das classes com código-fonte pré-implementado. Selecione uma das opções
+        abaixo para acessar os serviços.</string>
+    <string name="light_sensor">Sensor de luminosidade </string>
+    <string name="light_sensor_desc">Afere a intensidade de luz incidindo sobre o sensor no dispositivo. </string>
+    <string name="linear_acceleration">Aceleração Linear </string>
+    <string name="linear_acceleration_desc">Este sensor afere a aceleração sobre cada um dos eixos, excluindo-se o valor gravitacional. Use esse sensor quando desejar trabalhar
+        com valores de aceleração sobre o dispositivo, desconsiderando a aceleração gravitacional. Por exemplo, você pode usar esse sensor para determinar a velocidade do seu
+        carro. Recomenda-se calibrar o sensor com o celular em repouso, para desconsiderar o valor offset que ele normalmente possui em relação à origem.
+    </string>
+    <string name="lux">lux </string>
+    <string name="lux_desc">lux </string>
+    <string name="location_app">Serviço de localização </string>
+    <string name="magnetometer">Magnetômetro </string>
+    <string name="magnetometer_desc">Este sensor afere a intensidade e sentido dos campos magnéticos ao redor do dispositivo.  </string>
+    <string name="microseconds">microssegundos </string>
+    <string name="microtesla">μT </string>
+    <string name="ms2">m/s² </string>
+    <string name="magnetic_field">Campo magnético </string>
+    <string name="magnetic_field_desc">Permite monitorar mudanças do campo magnético da Terra. Pode-se usar o vetor de rotação para identificar valores de rotação do
+        dispositivo ou o acelerômetro em conjunto com o sensor de campo magnético para determinar valores de rotação em torno de cada eixo (yaw, pitch e row).</string>
+    <string name="magnetic_field_uncal">Campo magnético sem calibração </string>
+    <string name="magnetic_field_uncal_desc">Similar ao campo magnético, porém sem calibração realizada pelo hardware. Contudo, alguns sensores podem vir com calibração de
+    fábrica, como de temperatura.</string>
+    <string name="min_delay">Delay mínimo (latência): </string>
+    <string name="microphone_app">Microfone </string>
+    <string name="msg_req_perm">Você precisa conceder permissão para usar as funcionalidades.</string>
+    <string name="msg_photo_taken">A imagem foi salva em  </string>
+    <string name="not_available">Indisponível </string>
+    <string name="pickup_gesture">Gesto de pegar</string>
+    <string name="play">Play</string>
+    <string name="power_consumption">Consumo de bateria: </string>
+    <string name="pressure_sensor">Sensor de pressão </string>
+    <string name="pressure_sensor_desc">Monitora a pressão do ar ambiente.</string>
+    <string name="proximity_sensor">Sensor de proximidade </string>
+    <string name="proximity_sensor_desc">Monitora a distância de um objeto até o sensor.</string>
+    <string name="quat">quat. </string>
+    <string name="rads">rad/s </string>
+    <string name="range">Range: </string>
+    <string name="record">Gravar </string>
+    <string name="record_video">Gravar Vídeo </string>
+    <string name="request_permission">Permissão de câmera necessária.</string>
+    <string name="resolution">Resolução: </string>
+    <string name="rotation_sensor">Sensor de rotação </string>
+    <string name="rotation_sensor_desc">O sensor de rotação representa a orientação do dispositivo como uma combinação de um ângulo e um eixo, no qual o dispositivo
+        rotacionou θ graus em torno dos eixos x, y e z. Aproximadamente, x aponta para leste, y para o norte e z para o céu (perpendicular ao solo). </string>
+    <string name="sensor_app">Aplicativo Sensores </string>
+    <string name="significant_motion">Movimento significativo </string>
+    <string name="significant_motion_desc">Este sensor dispara um evento sempre que um movimento significativo ocorre com o dispositivo. Em seguida, ele se desabilita e só
+        acorda quando um novo movimento significativo ocorre.</string>
+    <string name="speechtotext_app">Aplicativo voz para texto </string>
+    <string name="step_detector">Detector de passos </string>
+    <string name="step_detector_desc">Dispara um evento quando o usuário dá um passo. Idealmente, a latência deve ser menor que 2s. </string>
+    <string name="step_counter">Contador de passos </string>
+    <string name="step_counter_desc">Conta o número de passos dado pelo usuário desde a hora da última inicialização do sistema (último boot). Possui latência maior que o
+        detector de passos (até 10s), mas é mais preciso que o detector de passos.
+    </string>
+    <string name="stop_playing">Parar de tocar </string>
+    <string name="stop_recording">Interromper gravaçaõ </string>
+    <string name="tilt_detector">Detector de giro </string>
+    <string name="tilt_detector_desc">Gera um evento toda vez que um movimento de giro é realizado. Idealmente, o sensor dispara o evento quando uma mudança de ao menos
+        35 graus ocorre nos eixos em um período de tempo menor que 2s.</string>
+    <string name="type">Tipo: </string>
+    <string name="unity">Unidade: </string>
+    <string name="values">Valores: </string>
+    <string name="wake_gesture">Gesto de acordar </string>
+    <string name="which_app">Amostras disponíveis: </string>
+    <string name="x">X = </string>
+    <string name="y">Y = </string>
+    <string name="z">Z = </string>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="framework.accessibilityframework">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".view.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Initial default activities -->
+        <activity android:name=".view.camera.CustomCameraActivity"/>
+        <activity android:name=".view.camera.DefaultCameraActivity"/>
+        <activity android:name=".control.microphone.audiorecorder.MicrophoneActivity"/>
+        <activity android:name=".view.SensorActivity"/>
+        <activity android:name=".view.SensorListManager"/>
+
+        <!-- activities for environmental sensors -->
+        <activity android:name=".control.environmentalsensor.HumiditySensor"/>
+        <activity android:name=".control.environmentalsensor.LightSensor"/>
+        <activity android:name=".control.environmentalsensor.PressureSensor"/>
+        <activity android:name=".control.environmentalsensor.Thermometer"/>
+
+        <!-- activities for motion sensors -->
+        <activity android:name=".view.sensor.motionsensor.Accelerometer"/>
+        <activity android:name=".view.sensor.motionsensor.GravitySensor"/>
+        <activity android:name=".view.sensor.motionsensor.Gyroscope"/>
+        <activity android:name=".view.sensor.motionsensor.GyroscopeUncalibrated"/>
+        <activity android:name=".view.sensor.motionsensor.LinearAccelerometer"/>
+        <activity android:name=".view.sensor.motionsensor.RotationVector"/>
+        <activity android:name=".view.sensor.motionsensor.SignificantMotion"/>
+        <activity android:name=".view.sensor.motionsensor.StepCounter"/>
+        <activity android:name=".view.sensor.motionsensor.StepDetector"/>
+
+        <!-- activities for position sensors -->
+        <activity android:name=".view.sensor.positionsensor.GameRotationVector"/>
+        <activity android:name=".view.sensor.positionsensor.GeomagneticRotationVector"/>
+        <activity android:name=".view.sensor.positionsensor.MagneticField"/>
+        <activity android:name=".view.sensor.positionsensor.MagneticFiledUncalibrated"/>
+        <activity android:name=".view.sensor.positionsensor.ProximitySensor"/>
+        <activity android:name=".control.microphone.speechtotext.SpeechRecognizer"/>
+        <activity android:name=".view.sensor.positionsensor.gps.ContinuousLocationActivity">
+        </activity>
+        <activity android:name=".view.sensor.positionsensor.gps.LocationActivity">
+        </activity>
+    </application>
+
+</manifest>
