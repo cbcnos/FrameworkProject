@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * The accelerometer is a motion sensor. All of the motion sensors return multi-dimensional
@@ -18,7 +18,7 @@ import framework.accessibilityframework.control.SensorFacade;
  * along the corresponding axis (0 for x, 1 for y, 2 for z).
  * Motion sensors are useful for monitoring device movement,
  * such as tilt, shake, rotation, or swing.
- * @see SensorFacade for documentation regarding detecting device movement
+ * @see SensorUtils for documentation regarding detecting device movement
  */
 public class Accelerometer extends AppCompatActivity implements SensorEventListener {
     private SensorManager sensorManager;
@@ -50,7 +50,7 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             accelerometer = facade.getSensorInstance(sensorManager, Sensor.TYPE_ACCELEROMETER);
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);

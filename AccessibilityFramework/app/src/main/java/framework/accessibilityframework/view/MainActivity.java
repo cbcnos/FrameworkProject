@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.microphone.audiorecorder.MicrophoneActivity;
-import framework.accessibilityframework.control.microphone.speechtotext.SpeechRecognizer;
+import framework.accessibilityframework.view.microphone.audiorecorder.MicrophoneActivity;
+import framework.accessibilityframework.view.microphone.speechtotext.SpeechRecognizer;
 import framework.accessibilityframework.view.sensor.positionsensor.gps.ContinuousLocationActivity;
 import framework.accessibilityframework.view.sensor.positionsensor.gps.LocationActivity;
 import framework.accessibilityframework.view.camera.CustomCameraActivity;

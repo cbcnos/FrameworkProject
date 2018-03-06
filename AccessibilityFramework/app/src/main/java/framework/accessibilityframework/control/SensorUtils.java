@@ -13,7 +13,7 @@ import framework.accessibilityframework.R;
 /**
  * Created by Olibario on 17/02/2016.
  */
-public class SensorFacade {
+public class SensorUtils {
 
     /** User-friendly names for the sensors **/
     /**Orientation, temperature, glance gesture, pick-up gesture, tilt detector and wake gesture **/
@@ -45,12 +45,12 @@ public class SensorFacade {
                    // according to the names above. These are NOT the sensors the user's device is equipped with.
                    //For that purpose, please refer to functions getDeviceSensors() and getDeviceSensorsAsArray()
 
-    private static SensorFacade facade;
+    private static SensorUtils facade;
 
-    public static SensorFacade getInstance(){
+    public static SensorUtils getInstance(){
         populateSensorNames();
         if (facade == null){
-            facade = new SensorFacade();
+            facade = new SensorUtils();
         }
         return facade;
     }

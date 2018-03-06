@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * Created by Olibario on 05/10/2017.
@@ -45,7 +45,7 @@ public class GeomagneticRotationVector extends AppCompatActivity implements Sens
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             geoMagneticRotationSensor = facade.getSensorInstance(sensorManager, Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR);
             sensorManager.registerListener(this, geoMagneticRotationSensor, SensorManager.SENSOR_DELAY_NORMAL);

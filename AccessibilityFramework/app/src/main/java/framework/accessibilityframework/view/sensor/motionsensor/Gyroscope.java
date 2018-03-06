@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * The gyroscope measures the rate of rotation in rad/s around a device's x, y, and z axis.
@@ -45,7 +45,7 @@ public class Gyroscope extends AppCompatActivity implements SensorEventListener 
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             gyroscope = facade.getSensorInstance(sensorManager, Sensor.TYPE_GYROSCOPE);
             sensorManager.registerListener(this, gyroscope, SensorManager.SENSOR_DELAY_NORMAL);

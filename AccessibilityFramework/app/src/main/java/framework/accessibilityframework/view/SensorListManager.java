@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * This class refers to the screen in which the user selects a radiobutton of the application he wants to look at.
@@ -36,7 +36,7 @@ public class SensorListManager extends AppCompatActivity {
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         //Gets the instance of the facade class
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
 
         //Restrieves list of all sensors available on the device
         final Integer[] available_sensors = facade.getDeviceSensorTypes(manager, SensorListManager.this);

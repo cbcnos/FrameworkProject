@@ -30,15 +30,15 @@
         <!-- Initial default activities -->
         <activity android:name=".view.camera.CustomCameraActivity"/>
         <activity android:name=".view.camera.DefaultCameraActivity"/>
-        <activity android:name=".control.microphone.audiorecorder.MicrophoneActivity"/>
+        <activity android:name=".view.microphone.audiorecorder.MicrophoneActivity"/>
         <activity android:name=".view.SensorActivity"/>
         <activity android:name=".view.SensorListManager"/>
 
         <!-- activities for environmental sensors -->
-        <activity android:name=".control.environmentalsensor.HumiditySensor"/>
-        <activity android:name=".control.environmentalsensor.LightSensor"/>
-        <activity android:name=".control.environmentalsensor.PressureSensor"/>
-        <activity android:name=".control.environmentalsensor.Thermometer"/>
+        <activity android:name=".view.sensor.environmentalsensor.HumiditySensor"/>
+        <activity android:name=".view.sensor.environmentalsensor.LightSensor"/>
+        <activity android:name=".view.sensor.environmentalsensor.PressureSensor"/>
+        <activity android:name=".view.sensor.environmentalsensor.Thermometer"/>
 
         <!-- activities for motion sensors -->
         <activity android:name=".view.sensor.motionsensor.Accelerometer"/>
@@ -57,7 +57,7 @@
         <activity android:name=".view.sensor.positionsensor.MagneticField"/>
         <activity android:name=".view.sensor.positionsensor.MagneticFiledUncalibrated"/>
         <activity android:name=".view.sensor.positionsensor.ProximitySensor"/>
-        <activity android:name=".control.microphone.speechtotext.SpeechRecognizer"/>
+        <activity android:name=".view.microphone.speechtotext.SpeechRecognizer"/>
         <activity android:name=".view.sensor.positionsensor.gps.ContinuousLocationActivity">
         </activity>
         <activity android:name=".view.sensor.positionsensor.gps.LocationActivity">

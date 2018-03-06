@@ -1,4 +1,4 @@
-package framework.accessibilityframework.control.environmentalsensor;
+package framework.accessibilityframework.view.sensor.environmentalsensor;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * Unlike other environment sensors, the light sensor is common on mobile devices, because manufacturers
@@ -49,7 +49,7 @@ public class Thermometer extends AppCompatActivity implements SensorEventListene
     protected void onResume() {
         super.onResume();
 
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             thermometer = facade.getSensorInstance(sensorManager, Sensor.TYPE_AMBIENT_TEMPERATURE);
             sensorManager.registerListener(this, thermometer, SensorManager.SENSOR_DELAY_NORMAL);

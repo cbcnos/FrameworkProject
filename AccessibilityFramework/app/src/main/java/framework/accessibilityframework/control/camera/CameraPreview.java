@@ -1,4 +1,4 @@
-package framework.accessibilityframework.view.camera;
+package framework.accessibilityframework.control.camera;
 
 import android.content.Context;
 import android.hardware.Camera;

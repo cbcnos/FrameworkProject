@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * Created by Olibario on 05/10/2017.
@@ -44,7 +44,7 @@ public class GyroscopeUncalibrated extends AppCompatActivity implements SensorEv
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             gyroscope_uncalibrated = facade.getSensorInstance(sensorManager, Sensor.TYPE_GYROSCOPE_UNCALIBRATED);
             sensorManager.registerListener(this, gyroscope_uncalibrated, SensorManager.SENSOR_DELAY_NORMAL);

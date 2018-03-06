@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * The linear acceleration sensor provides you with a three-dimensional vector representing
@@ -56,7 +56,7 @@ public class LinearAccelerometer extends AppCompatActivity implements SensorEven
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             linearAccelerometer = facade.getSensorInstance(sensorManager, Sensor.TYPE_LINEAR_ACCELERATION);
             sensorManager.registerListener(this, linearAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);

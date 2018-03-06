@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * Created by Olibario on 05/10/2017.
@@ -43,7 +43,7 @@ public class SignificantMotion  extends AppCompatActivity implements SensorEvent
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             significantMotionSensor = facade.getSensorInstance(sensorManager, Sensor.TYPE_SIGNIFICANT_MOTION);
             sensorManager.registerListener(this, significantMotionSensor, SensorManager.SENSOR_DELAY_NORMAL);

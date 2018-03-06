@@ -30,6 +30,7 @@ import java.util.Date;
 import framework.accessibilityframework.control.PermissionUtils;
 import framework.accessibilityframework.R;
 import framework.accessibilityframework.control.MediaUtils;
+import framework.accessibilityframework.control.camera.CameraPreview;
 
 /**
  * This class controls the custom camera application. This application contains a preview of the camera in fullscreen, a button to

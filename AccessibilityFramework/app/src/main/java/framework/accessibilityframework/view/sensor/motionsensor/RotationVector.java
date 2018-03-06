@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * The rotation vector represents the orientation of the device as a combination of an angle and an axis,
@@ -45,7 +45,7 @@ public class RotationVector extends AppCompatActivity implements SensorEventList
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             rotationVectorSensor = facade.getSensorInstance(sensorManager, Sensor.TYPE_ROTATION_VECTOR);
             sensorManager.registerListener(this, rotationVectorSensor, SensorManager.SENSOR_DELAY_NORMAL);

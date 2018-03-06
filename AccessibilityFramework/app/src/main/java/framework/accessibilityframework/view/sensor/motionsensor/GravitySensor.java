@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.SensorFacade;
+import framework.accessibilityframework.control.SensorUtils;
 
 /**
  * The gravity sensor provides a three dimensional vector indicating the direction and magnitude
@@ -47,7 +47,7 @@ public class GravitySensor extends AppCompatActivity implements SensorEventListe
     @Override
     protected void onResume() {
         super.onResume();
-        SensorFacade facade = SensorFacade.getInstance();
+        SensorUtils facade = SensorUtils.getInstance();
         try{
             gravitySensor = facade.getSensorInstance(sensorManager, Sensor.TYPE_GRAVITY);
             sensorManager.registerListener(this, gravitySensor, SensorManager.SENSOR_DELAY_NORMAL);
