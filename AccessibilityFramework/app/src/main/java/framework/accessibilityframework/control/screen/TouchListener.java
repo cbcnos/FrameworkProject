@@ -9,7 +9,7 @@ import android.view.View;
  * To use it on a component, simply add this listener to the component (view / activity) and
  * change its methods according to your needs. Something like this:
     TouchListener touchListener = new TouchListener();
-    view.setOnTouchListener(touchListener);
+    view.setOnTouchListener(new TouchListener());
  */
 
 public class TouchListener implements View.OnTouchListener {
@@ -72,7 +72,16 @@ public class TouchListener implements View.OnTouchListener {
                 //one of the fingers (that are not the first finger) released the view
                 Log.d("DEBUG","Finger number "+ index +" (of a total of "+numberOfFingers+") relased the view");
                 break;
-
+            case MotionEvent.ACTION_MOVE:
+                if (singleTouch){
+                    //user single touch event released the view
+                    Log.d("DEBUG","Single touch action DOWN event");
+                }
+                else{
+                    //first finger of multitouch event released the view
+                    Log.d("DEBUG","Finger number "+ index +" (of a total of "+numberOfFingers+") moved the view");
+                }
+                break;
         }
         return false;
     }

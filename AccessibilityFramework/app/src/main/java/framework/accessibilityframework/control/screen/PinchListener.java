@@ -16,7 +16,7 @@ import android.view.View;
 
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-
+            mScaleDetector.onTouchEvent(event);
             return false;
         }
      });
@@ -37,6 +37,7 @@ public class PinchListener extends ScaleGestureDetector.SimpleOnScaleGestureList
 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
+
         float scaleFactor = detector.getScaleFactor(); //this is the scale factor of the pinch gesture
         //If you desire to resize the view when the user zooms in / out, please refer to the method scaleView()
 

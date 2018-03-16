@@ -26,6 +26,8 @@ import framework.accessibilityframework.R;
 /**
  * This class may be used in order to keep track of the user location updates. For example, if the user is walking in a certain city
  * and the application wants to keep track of his location updates.
+ * It can also be used to calculate the device speed, by using the location services. In this case, you
+ * must keep track of the gloab attributes oldTime, oldLat and oldLong and use them in getSpeed() function.
  * The location updates will occur every timeBetweenUpdates seconds, an attribute of the class.
  * In order to interrupt the updates, the developer must call method stopLocationUpdates() of the class. By default, this is done
  * when the user changes the activity, ie, when the method onPause() is called. Notice that this also occurs when the orientation of the
@@ -48,6 +50,10 @@ public class ContinuousLocationActivity extends AppCompatActivity {
     private boolean allPermissionsGranted = false;
     private boolean mRequestingLocationUpdates = true;
 
+    private double oldTime= 0; //this is the current time millis, used to calculate device speed
+    private double oldLat = 0.0; //the old latitude of the location (the penultimate one)
+    private double oldLon = 0.0; //the old longitude of the location (the penultimate one)
+
     private long timeBetweenUpdates = 30000; //time in MILLISECONDS between location updates. TODO Change this according to the app's needs
 
     ArrayList<String> addresses = new ArrayList<>(); //list of all addresses tracked. Position 0 contains the first address and the highest index of
@@ -61,7 +67,6 @@ public class ContinuousLocationActivity extends AppCompatActivity {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         try {
-
             mLocationCallback = new LocationCallback() {
 
                 @Override
@@ -73,6 +78,9 @@ public class ContinuousLocationActivity extends AppCompatActivity {
                         // latestAddress keeps the latest address identified by the location provider
                         ArrayList<String> _latestAddress = LocationHelper.getAddressFromLocation(location, ContinuousLocationActivity.this);
                         String latestAddress = _latestAddress.get(0);
+
+                        //Update here the global attributes oldTime, oldLat and oldLong if you want to keep
+                        //track of the device speed. Then use the values in function getSpeed() of this class
 
                         TextView tv = findViewById(R.id.textRecognized);
                         tv.setText(latestAddress);
@@ -130,6 +138,54 @@ public class ContinuousLocationActivity extends AppCompatActivity {
     private void stopLocationUpdates() {
         if (!mRequestingLocationUpdates)
             mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+    }
+
+    /**
+     * Use this function to calculate the device speed, by using the location service. In order to use it,
+     * you must update the values of global attributes
+     * @param lastLocation - the last location identified by the location service
+     * @param oldLatitude -  the latitude of the old location
+     * @param oldLongitude -  the longitude of the old location
+     * @param oldTimeMillis - the time when the old location (oldLatitude, oldLongitude) was retrieved
+     */
+    private void getspeed(Location lastLocation, float oldLatitude, float oldLongitude, double oldTimeMillis){
+        double newTime= System.currentTimeMillis();
+        double newLat = lastLocation.getLatitude();
+        double newLon = lastLocation.getLongitude();
+        if(lastLocation.hasSpeed()){ //in this case the api is able to retrieve the speed, in m/s
+            float speed = lastLocation.getSpeed();
+            Toast.makeText(getApplication(),"SPEED : "+String.valueOf(speed)+"m/s",Toast.LENGTH_SHORT).show();
+        } else { //when the api is not able to calculate, we calculate the speed manually, by distance/time
+            double distance = getDistance(newLat,newLon,oldLatitude,oldLongitude);
+            double timeDifferent = newTime - oldTimeMillis;
+            double speed = distance/timeDifferent;
+
+            //here we update the values. You might to want to avoid this, depending on your application purposes
+            oldTime = newTime;
+            oldLat = newLat;
+            oldLon = newLon;
+            Toast.makeText(getApplication(),"SPEED 2 : "+String.valueOf(speed)+"m/s",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * this function calculates the distance between two coordinates (latitude, longitude). Another
+     * way of doing this is by using the method location.getDistance() of the location service API.
+     * @param lat1 - the latitude of the first location
+     * @param lon1 - the longitude of the first location
+     * @param lat2 - the latitude of the second location
+     * @param lon2 - the longitude of the second location
+     * @return
+     */
+    public double getDistance(double lat1, double lon1, double lat2, double lon2){
+        double radius = 6371000; //the Earth radius
+        double dLat = Math.toRadians(lat2-lat1);
+        double dLon = Math.toRadians(lon2-lon1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLon/2) * Math.sin(dLon/2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        return radius * c;
     }
 
     @Override

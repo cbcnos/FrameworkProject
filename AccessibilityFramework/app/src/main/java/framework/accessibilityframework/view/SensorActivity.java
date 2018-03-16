@@ -23,6 +23,7 @@ import framework.accessibilityframework.R;
 public class SensorActivity extends AppCompatActivity implements SensorEventListener {
     private SensorManager sensorManager;
 
+    private String accel = "";
     //List of every possible sensors that the designer may use
     private Sensor accelerometer;
     private Sensor ambientTemperatureSensor;
@@ -249,7 +250,8 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         range.setText(s.getMaximumRange()+"");
         delay.setText(s.getMinDelay()+"");
         unity.setText(getString(R.string.ms2));
-        values.setText(event.values[0]+"\n"+event.values[1]+"\n"+event.values[2]);
+        accel += event.values[0]+", "+event.values[1]+", "+event.values[2] +"\n";
+        values.setText(accel);
     }
     protected void workWithAmbientTemperature(SensorEvent event) {
         Sensor s = event.sensor;
