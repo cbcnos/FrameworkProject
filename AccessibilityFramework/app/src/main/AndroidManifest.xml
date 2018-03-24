@@ -30,7 +30,7 @@
         <!-- Initial default activities -->
         <activity android:name=".view.camera.CustomCameraActivity"/>
         <activity android:name=".view.camera.DefaultCameraActivity"/>
-        <activity android:name=".view.microphone.audiorecorder.MicrophoneActivity"/>
+        <activity android:name=".control.microphone.audiorecorder.MicrophoneActivity"/>
         <activity android:name=".view.SensorActivity"/>
         <activity android:name=".view.SensorListManager"/>
 
@@ -57,7 +57,7 @@
         <activity android:name=".view.sensor.positionsensor.MagneticField"/>
         <activity android:name=".view.sensor.positionsensor.MagneticFiledUncalibrated"/>
         <activity android:name=".view.sensor.positionsensor.ProximitySensor"/>
-        <activity android:name=".view.microphone.speechtotext.SpeechRecognizer"/>
+        <activity android:name=".control.microphone.speechtotext.SpeechRecognizer"/>
         <activity android:name=".view.sensor.positionsensor.gps.ContinuousLocationActivity">
         </activity>
         <activity android:name=".view.sensor.positionsensor.gps.LocationActivity">

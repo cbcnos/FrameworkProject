@@ -1,4 +1,4 @@
-package framework.accessibilityframework.view.microphone.audiorecorder;
+package framework.accessibilityframework.control.microphone.audiorecorder;
 
 /*
  * The application needs to have the permission to write to external storage

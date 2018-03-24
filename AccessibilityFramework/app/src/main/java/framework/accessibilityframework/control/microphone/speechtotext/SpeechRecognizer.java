@@ -1,4 +1,4 @@
-package framework.accessibilityframework.view.microphone.speechtotext;
+package framework.accessibilityframework.control.microphone.speechtotext;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
