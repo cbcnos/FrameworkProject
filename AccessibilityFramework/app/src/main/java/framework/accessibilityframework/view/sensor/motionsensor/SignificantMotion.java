@@ -12,7 +12,7 @@ import framework.accessibilityframework.R;
 import framework.accessibilityframework.control.SensorUtils;
 
 /**
- * Created by Olibario on 05/10/2017.
+ * Created by Olibario
  */
 public class SignificantMotion  extends AppCompatActivity implements SensorEventListener {
     private SensorManager sensorManager;

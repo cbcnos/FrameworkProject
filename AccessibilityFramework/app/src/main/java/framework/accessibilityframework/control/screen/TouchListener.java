@@ -16,7 +16,7 @@ public class TouchListener implements View.OnTouchListener {
 
     /**
      * Use this listener to identify whether the user clicked or touched on the view with one or more fingers.
-     * In case of multitouch (more than one finger), the fisrt finger to touch the view has index 0 and the addicitonal
+     * In case of multitouch (more than one finger), the fisrt finger to touch the view has index 0 and the additional
      * fingers have greater indexes. This is useful for simple touch gestures.
      * @param view
      * @param motionEvent

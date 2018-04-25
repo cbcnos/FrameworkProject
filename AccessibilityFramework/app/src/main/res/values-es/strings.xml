@@ -31,11 +31,14 @@
     <string name="humidity_sensor">Este sensor monitorea la humedad relativa del ambiente. </string>
     <string name="humidity_sensor_desc">Sensor de humedad </string>
     <string name="intro_msg">Hola. Bienvenido al módulo de Cliente Android. Este módulo tiene el objetivo de ayudarte a crear aplicaciones móviles que usan el hardware ya disponible en tu dispositivo, como la cámara, el micrófono y los sensores. Puedes empezar a comprender el módulo usando uno de los ejemplos propuestos abajo. </string>
+    <string name="landscape">Horizontal </string>
+    <string name="lateralMovements">Movimentos laterales </string>
     <string name="light_sensor">Sensor de luz  </string>
     <string name="light_sensor_desc">Este sensor monitorea la iluminación que llega al dispositivo.</string>
     <string name="linear_acceleration">Aceleración lineal </string>
     <string name="linear_acceleration_desc">El sensor de aceleración lineal obtiene un vector tridimensional que representa la aceleración del dispositivo en cada eje, despreciando la gravedad. Este es comúnmente usado cuando se busca obtener datos de la aceleración sin influencia de la gravedad. Por ejemplo, puede ser usado para ver qué tan rápido va un automóvil. El sensor de aceleración lineal siempre tiene un Offset, este puede ser removido al calibrar el dispositivo cuando esté esta estable sobre una superficie horizontal.
-</string>
+    </string>
+    <string name="littleShake">MOVIMENTO LIGERO DE SACUDIR</string>
     <string name="location_app">Servicio de localizacion </string>
     <string name="lux">lux </string>
     <string name="lux_desc">lux </string>
@@ -50,11 +53,16 @@
     <string name="magnetic_field_uncal_desc"> El magnetometro de campo magnético no calibrado es similar al sensor de campo geomagnético, excepto que ninguna calibración exhaustiva de hierro es aplicada al campo magnético. La calibración de fábrica y la compensación de temperatura son aún aplicados al campo magnético. El magnetometro no calibrado es útil para manejar algunas malas estimaciones de hierro.</string>
     <string name="min_delay">Retraso mínimo: </string>
     <string name="microphone_app">Aplicación de micrófono </string>
+    <string name="motionevent">Evento dinámico</string>
+    <string name="motionevents">Eventos dinámicos</string>
+    <string name="motionscreen">Esta pantalla muestra los movimientos detectados por el dispositivo. Intenta mover el dispositivo hacia el lado, realizar movimientos de sacudir o simular que está salpicando una comida, como si el dispositivo fuera el salero.</string>
     <string name="msg_req_perm">Debes conceder permisos para acceder a funccionalidades de esa página.</string>
     <string name="msg_photo_taken">El imaje fue guardado en </string>
     <string name="not_available">No disponible </string>
+    <string name="orientation">Orientación</string>
     <string name="pickup_gesture">Gesto de recogida</string>
     <string name="play">Reproducir</string>
+    <string name="portrait">Vertical</string>
     <string name="power_consumption">Consumo de batería: </string>
     <string name="pressure_sensor">Sensor de presión</string>
     <string name="pressure_sensor_desc">Este sensor monitorea la presión ambiente del aire.</string>
@@ -69,7 +77,9 @@
     <string name="resolution">Resolución: </string>
     <string name="rotation_sensor">Sensor de rotación </string>
     <string name="rotation_sensor_desc">El vector de rotación representa la orientación del dispositivo como una combinación de un ángulo y un eje en el que el dispositivo ha rotado un ángulo θ alrededor de un eje (x, y, o z). X puntos aproximadamente hacia el este, Y al norte y Z hacia el cielo (perpendicular al suelo). </string>
+    <string name="saltMovements">MOVIMENTO DE SALPICAR </string>
     <string name="sensor_app">Aplicación de sensores </string>
+    <string name="shakeMovement">MOVIMENTO DE SACUDIR</string>
     <string name="significant_motion">Movimiento significativo </string>
     <string name="significant_motion_desc">El sensor de movimiento significativo dispara un evento cada vez que un movimiento es detectado y luego se desactiva a si mismo. El sensor continúa operando en modo silencioso y se activará automáticamente cuando otro movimiento significativo sea detectado.</string>
     <string name="speechtotext_app">Voz para Texto </string>

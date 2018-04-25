@@ -46,6 +46,7 @@
         <activity android:name=".view.sensor.motionsensor.Gyroscope"/>
         <activity android:name=".view.sensor.motionsensor.GyroscopeUncalibrated"/>
         <activity android:name=".view.sensor.motionsensor.LinearAccelerometer"/>
+        <activity android:name=".view.sensor.motionsensor.MotionEventActivity"/>
         <activity android:name=".view.sensor.motionsensor.RotationVector"/>
         <activity android:name=".view.sensor.motionsensor.SignificantMotion"/>
         <activity android:name=".view.sensor.motionsensor.StepCounter"/>

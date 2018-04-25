@@ -34,7 +34,8 @@ import framework.accessibilityframework.view.camera.CustomCameraActivity;
 public class MicrophoneActivity extends Activity
 {
     private static final String LOG_TAG = "AudioRecordTest";
-    private static String mFileName;
+    private static final String FORMAT = "3gp"; // audio format. Also supports wav, mp4 and flac
+    private static String mFileName; //file name to be saved
 
     private MediaRecorder mRecorder;
 
@@ -86,7 +87,7 @@ public class MicrophoneActivity extends Activity
         if (allPermissionsGranted || Build.VERSION.SDK_INT < 23) {
 
             mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-            mFileName += "/audiorecord.3gp";
+            mFileName += "/audiorecord."+FORMAT;
             mPlayer = new MediaPlayer();
 
             startRecording = startPlaying = true;

@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * This is a helper class to treat exceptions regarding the attempt of retrieving locations.
+ */
 public class LocationHelper {
 
     public static ArrayList<String> getAddressFromLocation(Location location, Context context){

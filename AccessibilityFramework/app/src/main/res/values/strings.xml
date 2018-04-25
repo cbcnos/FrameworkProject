@@ -35,6 +35,9 @@
     <string name="humidity_sensor_desc">Humidity Sensor </string>
     <string name="intro_msg">Hello. Welcome to the Android Client Module. This module is intended to help you to create mobile applications that use the built-in hardwares
     of your mobile phone, such as the camera, microphone and sensors. You can start understanding the module by picking one of our sample examples bellow.</string>
+    <string name="landscape">Landscape </string>
+    <string name="lateralMovements">Lateral moves </string>
+    <string name="leftToRight">Left-to-Right Move </string>
     <string name="light_sensor">Light Sensor </string>
     <string name="light_sensor_desc">This sensor monitors the illuminance coming into the device. </string>
     <string name="linear_acceleration">Linear Acceleration </string>
@@ -42,6 +45,7 @@
         excluding gravity. You typically use this sensor when you want to obtain acceleration data without the influence of gravity. For example, you could use this sensor to
         see how fast your car is going. The linear acceleration sensor always has an offset, which you need to remove by calibrating the device when it is resting on a table.
     </string>
+    <string name="littleShake">MINOR SHAKE MOVEMENT</string>
     <string name="lux">lux </string>
     <string name="lux_desc">lux </string>
     <string name="location_app">Single location service </string>
@@ -49,6 +53,10 @@
     <string name="magnetometer_desc">Magnetometer </string>
     <string name="microseconds">micro seconds </string>
     <string name="microtesla">μT </string>
+    <string name="motionscreen">This is meant to detect motion events with your phone. Move your to the right or to the left and try shaking the device. Also simulate that you
+        are splashing salt to some food, with a salt shaker.</string>
+    <string name="motionevent">Motion event</string>
+    <string name="motionevents">Motion events</string>
     <string name="ms2">m/s² </string>
     <string name="magnetic_field">Magnetic field </string>
     <string name="magnetic_field_desc">The geomagnetic field sensor lets you monitor changes in the earth\'s magnetic field. you can use the rotation vector sensor to determine
@@ -60,8 +68,10 @@
     <string name="msg_req_perm">You have to grant permission for using this page\'s functionalities.</string>
     <string name="msg_photo_taken">Your picture has been saved to </string>
     <string name="not_available">Not available </string>
+    <string name="orientation">Orientation</string>
     <string name="pickup_gesture">Pick-up gesture</string>
     <string name="play">Play</string>
+    <string name="portrair">Portrait </string>
     <string name="power_consumption">Power consumption: </string>
     <string name="pressure_sensor">Pressure Sensor </string>
     <string name="pressure_sensor_desc">This sensor monitors the ambient air pressure.</string>
@@ -74,10 +84,13 @@
     <string name="record_video">Record Video </string>
     <string name="request_permission">This sample needs camera permission.</string>
     <string name="resolution">Resolution: </string>
+    <string name="rightToLeftMove">Right-to-left move </string>
     <string name="rotation_sensor">Rotation Sensor </string>
     <string name="rotation_sensor_desc">The rotation vector represents the orientation of the device as a combination of an angle and an axis, in which the device has rotated
         through an angle θ around an axis (x, y, or z). X approximately points to east, Y to north and Z to the sky (perpendicular to the ground). </string>
+    <string name="saltMovements">SPLASHING SALT MOVEMENT </string>
     <string name="sensor_app">Sensors application </string>
+    <string name="shakeMovement">SHAKE MOVEMENT </string>
     <string name="significant_motion">Significant motion </string>
     <string name="significant_motion_desc">The significant motion sensor triggers an event each time significant motion is detected and then it disables itself. The sensor continues to operate while the device is asleep
      and will automatically wake the device to notify when significant motion is detected.</string>

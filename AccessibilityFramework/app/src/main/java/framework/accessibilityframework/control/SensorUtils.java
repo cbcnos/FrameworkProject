@@ -1,9 +1,13 @@
 package framework.accessibilityframework.control;
 
+import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Surface;
 
 import java.util.HashMap;
 import java.util.List;
@@ -463,6 +467,12 @@ public class SensorUtils {
         return result;
     }
 
+
+    /********************************************************************************************************/
+    /********************************* MOTION SENSORS FUNCTIONALITIES ***************************************/
+    /********************************************************************************************************/
+
+
     /**
      * Returns the angular speed of the device. This speed comprises all coordinates in only one value.
      * @param event - the sensor object with coordinates
@@ -471,6 +481,248 @@ public class SensorUtils {
     public float getAngularSpeed(SensorEvent event){
         return (float) Math.sqrt(event.values[0] * event.values[0] + event.values[1] * event.values[1] + event.values[2] * event.values[2]);
     }
+
+    /**
+     * Detect if the device is free falling. A free fall ocuurs when the coordinates of the
+     * accelerometer are all close to zero. In this function, the threshold represents the tolerable
+     * amount that will be considered as zero by the algorithm. For instance, if the threshold is 0.2,
+     * then the device will assume that (0.2, 0.2, 0.2) indicates a free falling, whereas
+     * (0.21, 0.2, 0.2) does not indicate a free falling.
+     * @param event - the sensor event with the accelerometer data
+     * @param threshold - the float threshold. This value should be low enough to detect free falling correctly
+     * @return
+     */
+    public boolean isFreeFalling(SensorEvent event, double threshold){
+        if (threshold < 0){
+            threshold = 0;
+        }
+        return ((Math.abs(event.values[0]) <= threshold) && (Math.abs(event.values[1]) <= threshold)
+                && (Math.abs(event.values[2]) <= threshold));
+    }
+
+    /**
+     * This function checks if the device is in portrait position.
+     * @param a - the current activity
+     * @return true if the device is in portrait. Else if in landscape
+     */
+    public boolean isInPortrait(Activity a) {
+        //this rotation checks the orientation realtive to the initial orientation of the device
+        //using this instruction alone to determine whether the device is in portrait or landscape
+        //may be inaccurate
+        int rotation = a.getWindowManager().getDefaultDisplay().getRotation();
+
+        DisplayMetrics dm = new DisplayMetrics();
+        a.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width = dm.widthPixels; //the width of the device, in pixels
+        int height = dm.heightPixels; //the height of the device, in pixels
+
+        boolean orientation;
+        // if the device's natural orientation (the initital one) is portrait:
+        if ((rotation == Surface.ROTATION_0
+                || rotation == Surface.ROTATION_180) && height > width ||
+                (rotation == Surface.ROTATION_90
+                        || rotation == Surface.ROTATION_270) && width > height) {
+            switch(rotation) {
+                case Surface.ROTATION_0:
+                    orientation = true;
+                    break;
+                case Surface.ROTATION_90:
+                    orientation = false;
+                    break;
+                case Surface.ROTATION_180:
+                    orientation = true;
+                    break;
+                case Surface.ROTATION_270:
+                    orientation = false;
+                    break;
+                default:
+                    Log.e("e", "Unknown screen orientation. Defaulting to " +
+                            "portrait.");
+                    orientation = true;
+                    break;
+            }
+        }
+        // if the device's natural orientation is landscape (common in tablets for instance)
+        // or if the device is square.
+        else {
+            switch(rotation) {
+                case Surface.ROTATION_0:
+                    orientation = false;
+                    break;
+                case Surface.ROTATION_90:
+                    orientation = true;
+                    break;
+                case Surface.ROTATION_180:
+                    orientation = false;
+                    break;
+                case Surface.ROTATION_270:
+                    orientation = true;
+                    break;
+                default:
+                    Log.e("e", "Unknown screen orientation. Defaulting to " +
+                            "landscape.");
+                    orientation = false;
+                    break;
+            }
+        }
+
+        return orientation;
+    }
+
+    /**
+     * This function checks if the device is in landscape position.
+     * @param a - the current activity
+     * @return true if the device is in landscape. Else if in portrait
+     */
+    public boolean isInLanscape(Activity a){
+        return (!isInPortrait(a));
+    }
+
+    /**
+     * This function detects the screen orientation.
+     * @param a - the current activity
+     * @return It returns 1 for portrait and 2 for landscape.
+     */
+    public int getOrientation(Activity a){
+        if (isInPortrait(a)){
+            return 1;
+        }
+        return 2;
+    }
+
+
+    /**
+     * this function returns an integer value for each of the four possible rotations of the device's screen.
+     * This is a generalization of the functionality getOrientation()
+     * The values 1 and -1 indicate portrait orientation, while 2 and -1 indicate landscpae orientation.
+     * The value 1 is the default portrair one: with the device is normal layout.
+     * The value 1 is the portrait orientation resulted by rotating the device from the 1 position by 180 degrees,
+     * so it indicates the portrait with elements upside down in relation to the default portrait position.
+     * The value 2 is obtained when the device is rotated 90 degrees to the right of the 1 position.
+     * The value -2 is obtained when the device is rotated 90 degrees to the left of the 1 position (or 270 degrees to the right of the 1 position)
+     * The 0 value indicates that the orientation could not be retrieved.
+     * @param a - the current activity
+     * @return -2, -1, 0, 1 or 2.
+     */
+    public int getSpecificOrientation(Activity a) {
+        //this rotation checks the orientation realtive to the initial orientation of the device
+        //using this instruction alone to determine whether the device is in portrait or landscape
+        //may be inaccurate
+        int rotation = a.getWindowManager().getDefaultDisplay().getRotation();
+
+        DisplayMetrics dm = new DisplayMetrics();
+        a.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width = dm.widthPixels; //the width of the device, in pixels
+        int height = dm.heightPixels; //the height of the device, in pixels
+
+        int orientation;
+        // if the device's natural orientation (the initital one) is portrait:
+        if (rotation == Surface.ROTATION_0 && height > width){
+            orientation = 1;
+        }
+        else if (rotation == Surface.ROTATION_180 && height > width){
+            orientation = -1;
+        }
+        //if the device's orientarion (the initial one) is landscape
+        else if (rotation == Surface.ROTATION_90 && height < width){
+            orientation = -2;
+        }
+        else if (rotation == Surface.ROTATION_270 && height < width){
+            orientation = 2;
+        }
+        else { // if the device's natural orientation is landscape or if the device is square:
+            switch(rotation) {
+                case Surface.ROTATION_0:
+                    orientation = -2;
+                    break;
+                case Surface.ROTATION_90:
+                    orientation = -1;
+                    break;
+                case Surface.ROTATION_180:
+                    orientation = 2;
+                    break;
+                case Surface.ROTATION_270:
+                    orientation = 1;
+                    break;
+                default:
+                    Log.e("e", "Unknown screen orientation. Defaulting to " +
+                            "zero.");
+                    orientation = 0;
+                    break;
+            }
+        }
+        return orientation;
+    }
+
+    /**
+     * This function retrieves approximations for the parameters yaw, pitch and roll by using only the values of the accelerometer.
+     * This is NOT precise in cases which the device is sumitted to forces that are external to the gravity acceleration. So, use
+     * this functionality only in cases which the device may not suffer trepidations .
+     * @param event - the event with the values of the accelerometer coordinates
+     * @return
+     */
+    public float[] getYawPitchRowFromAccelerometer(SensorEvent event){
+        double yaw, pitch, roll;
+        float result[] = new float[3];
+        float x = event.values[0];
+        float y = event.values[1];
+        float z = event.values[2];
+
+        yaw = Math.atan(z/Math.sqrt(x*x + z*z));
+        pitch =  Math.atan(x/Math.sqrt(y*y + z*z));
+        roll = Math.atan(y/Math.sqrt(x*x + z*z));
+
+        //Conversão de radianos para graus
+        yaw = yaw*180/Math.PI;
+        pitch = pitch*180/Math.PI;
+        roll = roll*180/Math.PI;
+
+        result[0] = (float) yaw;
+        result[1] = (float) pitch;
+        result[2] = (float) roll;
+
+        return result;
+    }
+
+    /**
+     * Calculates the rotation matrix that is obtained by the value of the sensores accelerometer and magnetometer
+     * These two sensors are used together in order to calculate the yaw, pitch and roll with enhanced precision.
+     * Refer to getYawPitchRoll() method for better explanation on how to obtain these values
+     * if you have not calculated the matrix yet, simply set the rotationMatrix parameter to an empty float[9] array.
+     * Otherwise, use the previously-calculeted rotation matrix, which will be updated.
+     * @param rotationMatrix - the rotation matrix
+     * @param manager - a sensor manager
+     * @param accelData - the latest accelerometer coordinates
+     * @param magnetoData - the latest magnetometer coordinates
+     * @return - the rotation matrix (a float array with 9 positions)
+     */
+    public float[] getRotationMatrix(float[] rotationMatrix,SensorManager manager,
+                                     float[] accelData, float[] magnetoData){
+
+        SensorManager.getRotationMatrix(rotationMatrix, new float[9], accelData, magnetoData);
+        return rotationMatrix;
+    }
+
+    /**
+     * calculates the yaw, pitch and roll based of the rotationmatrix obtained by the values of both
+     * accelerometer and magnetometer. This function is more accurate than getYawPitchRowFromAccelerometer()
+     * and is suitable to calculate the yaw, pitch and roll even when the device is sumitted to external forces.
+     * It requires that a previously-calculated and up-to-date rotation matrix in order to be accurate.
+     * So, use functoin getRotationMatrix() every time you need to recalculate the yaw, pitch and roll values,
+     * before using this function.
+     * @param rotationMatrix - the rotation matrix
+     * @return - the values yaw, pitch and roll as the values at 0, 1 and 2 positions (respectively) of the
+     * array returned
+     */
+    public float[] getYawPitchRoll(float[] rotationMatrix){
+        float[] yawPitchRoll = new float[3];
+        SensorManager.getOrientation(rotationMatrix, yawPitchRoll);
+
+        return yawPitchRoll;
+    }
+
 
     /**
      * Normalize the rotation vector if it's big enough to get the axis
@@ -491,7 +743,9 @@ public class SensorUtils {
     }
 
     /**
-     * Retrieves the degrees (in º) the device is rotated relative to axis X.
+     * Retrieves the degrees (in º) the device is rotated relative to axis X. If you want to know the approximate
+     * rotation of a x coordinate in relation to a previous x coordinate, use this function for each x coordinate and
+     * then subtract the values, in absolute value. E.g. result = Math.abs(rotation2 - rotation1)
      * @param event - the sensor coordinates
      * @return - the rotation  in degrees
      */
@@ -500,7 +754,9 @@ public class SensorUtils {
     }
 
     /**
-     * Retrieves the degrees (in º) the device is rotated relative to axis Y.
+     * Retrieves the degrees (in º) the device is rotated relative to axis Y. If you want to know the approximate
+     * rotation of a Y coordinate in relation to a previous Y coordinate, use this function for each Y coordinate and
+     * then subtract the values, in absolute value. E.g. result = Math.abs(rotation2 - rotation1)
      * @param event - the sensor coordinates
      * @return - the rotation  in degrees
      */
@@ -509,7 +765,9 @@ public class SensorUtils {
     }
 
     /**
-     * Retrieves the degrees (in º) the device is rotated relative to axis Z.
+     * Retrieves the degrees (in º) the device is rotated relative to axis Z. If you want to know the approximate
+     * rotation of a Z coordinate in relation to a previous Z coordinate, use this function for each Z coordinate and
+     * then subtract the values, in absolute value. E.g. result = Math.abs(rotation2 - rotation1)
      * @param event - the sensor coordinates
      * @return - the rotation  in degrees
      */
@@ -518,7 +776,10 @@ public class SensorUtils {
     }
 
     /**
-     * Returns the degrees (in °) that the device is rotated relative to axes X, Y and Z.
+     * Returns the degrees (in °) that the device is rotated relative to axes X, Y and Z. If you want to know the approximate
+     * rotation of a (x,y,z) coordinate in relation to a previous (x,y,z) coordinate, use this function for each (x,y,z) coordinate and
+     * then subtract the values of each corresponding coordinate, in absolute value.
+     * E.g. (resultX, resultY, resultZ) = (Math.abs(rotationX2 - rotationX1), Math.abs(rotationY2 - rotationY1), Math.abs(rotationZ2 - rotationZ1))
      * @param event - the sensor  coordinates
      * @return - the rotations in degrees
      */

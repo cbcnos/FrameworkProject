@@ -70,6 +70,11 @@
             android:layout_height="wrap_content"
             android:text="@string/cont_location_app"
             android:id="@+id/cont_location_rb"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/motionevents"
+            android:id="@+id/motion_events_rb"/>
     </RadioGroup>
 
     <Button

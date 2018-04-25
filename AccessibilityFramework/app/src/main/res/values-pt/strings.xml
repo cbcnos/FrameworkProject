@@ -43,6 +43,8 @@
         reconhecimento de fala e de serviços de localização online, que normalmente usam o gps para obterem maior precisão. As permissões do arquivo Manifest são de todo o
         framework, e devem ser removidas quando não utilizadas na aplicação. O mesmo ocorre com atributos das classes com código-fonte pré-implementado. Selecione uma das opções
         abaixo para acessar os serviços.</string>
+    <string name="landscape">Paisagem (horizontal) </string>
+    <string name="lateralMovements">MOVIMENTO LATERAL </string>
     <string name="light_sensor">Sensor de luminosidade </string>
     <string name="light_sensor_desc">Afere a intensidade de luz incidindo sobre o sensor no dispositivo. </string>
     <string name="linear_acceleration">Aceleração Linear </string>
@@ -50,6 +52,7 @@
         com valores de aceleração sobre o dispositivo, desconsiderando a aceleração gravitacional. Por exemplo, você pode usar esse sensor para determinar a velocidade do seu
         carro. Recomenda-se calibrar o sensor com o celular em repouso, para desconsiderar o valor offset que ele normalmente possui em relação à origem.
     </string>
+    <string name="littleShake">MOVIMENTO SUAVE DE SHAKE</string>
     <string name="lux">lux </string>
     <string name="lux_desc">lux </string>
     <string name="location_app">Serviço de localização </string>
@@ -66,12 +69,18 @@
     fábrica, como de temperatura.</string>
     <string name="min_delay">Delay mínimo (latência): </string>
     <string name="microphone_app">Microfone </string>
+    <string name="motionevent">Movimento</string>
+    <string name="motionevents">Eventos de movimento</string>
+    <string name="motionscreen">Essa tela exibe movimentos detectados pelo dispositivo. Tente mover o dispositivo para o lado, realizar movimentos de sacudir (shake) ou simular
+        que está salpicando uma comida, como se o dispositivo fosse o saleiro.</string>
     <string name="msg_req_perm">Você precisa conceder permissão para usar as funcionalidades.</string>
     <string name="msg_photo_taken">A imagem foi salva em  </string>
     <string name="not_available">Indisponível </string>
+    <string name="orientation">Orientação</string>
     <string name="pickup_gesture">Gesto de pegar</string>
     <string name="play">Play</string>
     <string name="power_consumption">Consumo de bateria: </string>
+    <string name="portrait">Retrato (vertical) </string>
     <string name="pressure_sensor">Sensor de pressão </string>
     <string name="pressure_sensor_desc">Monitora a pressão do ar ambiente.</string>
     <string name="proximity_sensor">Sensor de proximidade </string>
@@ -86,7 +95,9 @@
     <string name="rotation_sensor">Sensor de rotação </string>
     <string name="rotation_sensor_desc">O sensor de rotação representa a orientação do dispositivo como uma combinação de um ângulo e um eixo, no qual o dispositivo
         rotacionou θ graus em torno dos eixos x, y e z. Aproximadamente, x aponta para leste, y para o norte e z para o céu (perpendicular ao solo). </string>
+    <string name="saltMovements">MOVIMENTO DE SALPICAR </string>
     <string name="sensor_app">Aplicativo Sensores </string>
+    <string name="shakeMovements">MOVIMENTO DE SHAKE </string>
     <string name="significant_motion">Movimento significativo </string>
     <string name="significant_motion_desc">Este sensor dispara um evento sempre que um movimento significativo ocorre com o dispositivo. Em seguida, ele se desabilita e só
         acorda quando um novo movimento significativo ocorre.</string>
