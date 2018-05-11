@@ -18,12 +18,14 @@ import framework.accessibilityframework.R;
  *
  * component.setOnDragListener(new DropTargetListener(getApplicationContext()))
  */
-class DropTargetListener implements View.OnDragListener {
+public class DropTargetListener implements View.OnDragListener {
 
     private Context context;
+    private DropCallback callback;
 
-    DropTargetListener(Context context){
+    public DropTargetListener(Context context, DropCallback callback){
         this.context = context;
+        this.callback = callback;
     }
 
     //flag that indicates if the source was dropped at the target's place
@@ -59,10 +61,16 @@ class DropTargetListener implements View.OnDragListener {
                 //if the source was released outside the target, it may become visible again
                 if (!sourceDroppedInTarget) {
                     sourceView.setVisibility(View.VISIBLE);
+                } else {
+                    callback.onDropInside();
                 }
             default:
                 break;
         }
         return true;
+    }
+
+    public interface DropCallback {
+        void onDropInside();
     }
 }

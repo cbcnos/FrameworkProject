@@ -29,10 +29,12 @@ public class PinchListener extends ScaleGestureDetector.SimpleOnScaleGestureList
      * to use it in a view of another class, just set the view you want to the constructor method, like shown on the header
      * of this class (above)
      */
-    public View view;
+    private View view;
+    private PinchCallback callback;
 
-    PinchListener(View v){
+    public PinchListener(View v, PinchCallback callback){
         this.view = v;
+        this.callback = callback;
     }
 
     @Override
@@ -40,13 +42,14 @@ public class PinchListener extends ScaleGestureDetector.SimpleOnScaleGestureList
 
         float scaleFactor = detector.getScaleFactor(); //this is the scale factor of the pinch gesture
         //If you desire to resize the view when the user zooms in / out, please refer to the method scaleView()
+        scaleView(scaleFactor);
 
         if (scaleFactor > 1) {
             //user is zooming out (fingers getting closer)
-            Log.d("DEBUG","Zooming out");
+            Log.d("DEBUG","Zooming out" + scaleFactor);
         } else {
             //user is zooming in (fingers getting away, in opposite directions)
-            Log.d("DEBUG","Zooming in");
+            Log.d("DEBUG","Zooming in" + scaleFactor);
         }
         return true;
     }
@@ -58,18 +61,26 @@ public class PinchListener extends ScaleGestureDetector.SimpleOnScaleGestureList
 
     @Override
     public void onScaleEnd(ScaleGestureDetector detector) {
+        callback.onScaleEnd();
     }
 
     /**
      * Method for resizing a view. Useful for example for zooming in/ out objects
      * @param scaleFactor
      */
-    public void scaleView(float scaleFactor){
-        scaleFactor = (scaleFactor < 1 ? 1 : scaleFactor); // prevent our view from becoming too small
+    private void scaleView(float scaleFactor){
+        scaleFactor = (view.getScaleX() * scaleFactor < 1 ? 1 : view.getScaleX() * scaleFactor); // prevent our view from becoming too small
         scaleFactor = ((float)((int)(scaleFactor * 100))) / 100; // Change precision to help with jitter when user just rests their fingers
 
         //resizing the view
         view.setScaleX(scaleFactor);
         view.setScaleY(scaleFactor);
+
+        callback.onScale();
+    }
+
+    public interface PinchCallback {
+        void onScale();
+        void onScaleEnd();
     }
 }

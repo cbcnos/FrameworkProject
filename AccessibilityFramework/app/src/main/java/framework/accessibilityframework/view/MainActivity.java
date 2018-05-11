@@ -4,64 +4,97 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RadioGroup;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import framework.accessibilityframework.R;
-import framework.accessibilityframework.control.microphone.audiorecorder.MicrophoneActivity;
-import framework.accessibilityframework.control.microphone.speechtotext.SpeechRecognizer;
-import framework.accessibilityframework.view.sensor.motionsensor.MotionEventActivity;
-import framework.accessibilityframework.view.sensor.positionsensor.gps.ContinuousLocationActivity;
-import framework.accessibilityframework.view.sensor.positionsensor.gps.LocationActivity;
-import framework.accessibilityframework.view.camera.CustomCameraActivity;
-import framework.accessibilityframework.view.camera.DefaultCameraActivity;
+import framework.accessibilityframework.view.touch.FeedActivity;
+import framework.accessibilityframework.view.touch.SquareActivity;
+import framework.accessibilityframework.view.touch.TomatoActivity;
+import framework.accessibilityframework.view.touch.TouchActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    RadioGroup which_app; //radio group of all possible sample applications
-    Button goBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        which_app = (RadioGroup) findViewById(R.id.options_rg);
-        goBtn = (Button) findViewById(R.id.go_btn);
+        ListView list = findViewById(R.id.main_list);
+        list.setAdapter(new CustomAdapter());
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
+    private class CustomAdapter extends BaseAdapter {
 
-        goBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToAppIntent;
-                int selectedRadio = which_app.getCheckedRadioButtonId();
+        @Override
+        public int getCount() {
+            return 4;
+        }
 
-                if (selectedRadio == R.id.custom_camera_rb)
-                    goToAppIntent = new Intent(MainActivity.this, CustomCameraActivity.class);
-                else if (selectedRadio == R.id.camera_rb)
-                    goToAppIntent = new Intent(MainActivity.this, DefaultCameraActivity.class);
-                else if (selectedRadio == R.id.mic_rb)
-                    goToAppIntent = new Intent(MainActivity.this, MicrophoneActivity.class);
-                else if (selectedRadio == R.id.speechtotext)
-                    goToAppIntent = new Intent(MainActivity.this, SpeechRecognizer.class);
-                else if (selectedRadio == R.id.sensor_rb)
-                    goToAppIntent = new Intent(MainActivity.this, SensorListManager.class);
-                else if (selectedRadio == R.id.location_rb)
-                    goToAppIntent = new Intent(MainActivity.this, LocationActivity.class);
-                else if (selectedRadio == R.id.cont_location_rb)
-                    goToAppIntent = new Intent(MainActivity.this, ContinuousLocationActivity.class);
-                else
-                    goToAppIntent = new Intent(MainActivity.this, MotionEventActivity.class);
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
 
-                startActivity(goToAppIntent);
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null)
+                convertView = getLayoutInflater().inflate(R.layout.list_item, parent, false);
+            switch (position) {
+                case 0:
+                    ((ImageView)convertView.findViewById(R.id.list_image)).setImageResource(R.drawable.tomato);
+                    ((TextView)convertView.findViewById(R.id.list_title)).setText(R.string.title1);
+                    ((TextView)convertView.findViewById(R.id.list_desc)).setText(R.string.desc1);
+                    convertView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(MainActivity.this, TomatoActivity.class));
+                        }
+                    });
+                    break;
+                 case 1:
+                    ((ImageView)convertView.findViewById(R.id.list_image)).setImageResource(R.drawable.monster_left);
+                    ((TextView)convertView.findViewById(R.id.list_title)).setText(R.string.title2);
+                    ((TextView)convertView.findViewById(R.id.list_desc)).setText(R.string.desc2);
+                    convertView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(MainActivity.this, FeedActivity.class));
+                        }
+                    });
+                    break;
+                 case 2:
+                    ((ImageView)convertView.findViewById(R.id.list_image)).setImageResource(R.drawable.square_tumb);
+                    ((TextView)convertView.findViewById(R.id.list_title)).setText(R.string.title3);
+                    ((TextView)convertView.findViewById(R.id.list_desc)).setText(R.string.desc3);
+                    convertView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(MainActivity.this, SquareActivity.class));
+                        }
+                    });
+                    break;
+                 case 3:
+                    ((ImageView)convertView.findViewById(R.id.list_image)).setImageResource(R.drawable.touch_tumb);
+                    ((TextView)convertView.findViewById(R.id.list_title)).setText(R.string.title4);
+                    ((TextView)convertView.findViewById(R.id.list_desc)).setText(R.string.desc4);
+                    convertView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(MainActivity.this, TouchActivity.class));
+                        }
+                    });
+                    break;
             }
-        });
-
-
+            return convertView;
+        }
     }
-
 }

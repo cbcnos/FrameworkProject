@@ -6,7 +6,7 @@
     <string name="ambient_temperature">Ambient Temperature </string>
     <string name="ambient_temperature_desc">This sensor monitors the ambient Temperature. </string>
     <string name="available_sensors">These are the sensors available on your device. Click on them to view details. </string>
-    <string name="app_name">Android Client</string>
+    <string name="app_name">AccessibilityFramework</string>
     <string name="camera_app">Device Camera Application </string>
     <string name="camera_error">This device doesn\'t support Camera2 API.</string>
     <string name="celsius">°C</string>
@@ -112,4 +112,20 @@
     <string name="x">X = </string>
     <string name="y">Y = </string>
     <string name="z">Z = </string>
+    <string name="tomato_image">Tomate</string>
+    <string name="tomato_intro">Pressione o tomate</string>
+    <string name="monster_image">Monstro</string>
+    <string name="feed_intro">Leve o tomate até o monstro</string>
+    <string name="square_intro">Utilizando movimentos de pinça, aumente o quadrado azul até ficar do tamanho do contorno preto.</string>
+    <string name="square_desc">Quadrado</string>
+    <string name="touch_intro">Realize toques na tela</string>
+    <string name="main_intro">Selecione um experimento para testar os reconhedores de toque do AccessibilityFramework</string>
+    <string name="title1">Jogo do tomate</string>
+    <string name="desc1">TouchListener</string>
+    <string name="title2">Jogo do monstro</string>
+    <string name="desc2">DragSourceListener e DropTargetListener</string>
+    <string name="title3">Jogo do quadrado</string>
+    <string name="desc3">PinchListener</string>
+    <string name="title4">Teste de toques</string>
+    <string name="desc4">TouchListener</string>
 </resources>

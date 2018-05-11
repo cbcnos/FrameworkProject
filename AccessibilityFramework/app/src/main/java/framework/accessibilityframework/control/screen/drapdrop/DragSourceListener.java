@@ -6,7 +6,7 @@ import android.view.View;
 
 /**
  * This class is meant to be used in components to be dragged to a target. It
- * may or may not be drooped at the target's adress.
+ * may or may not be drooped at the target's address.
  * In order to use it, do something like
  * component.setOnTouchListener(new DragSourceListener());
  */

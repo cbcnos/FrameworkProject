@@ -14,6 +14,12 @@ import android.view.View;
 
 public class TouchListener implements View.OnTouchListener {
 
+    private TouchCallback callback;
+
+    public TouchListener(TouchCallback callback) {
+        this.callback = callback;
+    }
+
     /**
      * Use this listener to identify whether the user clicked or touched on the view with one or more fingers.
      * In case of multitouch (more than one finger), the fisrt finger to touch the view has index 0 and the additional
@@ -43,8 +49,9 @@ public class TouchListener implements View.OnTouchListener {
             yPos = motionEvent.getY(index);
         }
 
-        switch (motionEvent.getAction()){
+        switch ((motionEvent.getAction() & MotionEvent.ACTION_MASK)){
             case MotionEvent.ACTION_DOWN:
+                callback.onTouch(index, xPos, yPos);
                 if (singleTouch){
                     //user pressed the view with only one finger
                     Log.d("DEBUG","Single touch action DOWN event");
@@ -66,6 +73,7 @@ public class TouchListener implements View.OnTouchListener {
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 //one of the fingers (that are not the first finger) touched the view
+                callback.onTouch(index, xPos, yPos);
                 Log.d("DEBUG","Finger number "+ index +" (of a total of "+numberOfFingers+") touched the view");
                 break;
             case MotionEvent.ACTION_POINTER_UP:
@@ -83,6 +91,10 @@ public class TouchListener implements View.OnTouchListener {
                 }
                 break;
         }
-        return false;
+        return true;
+    }
+
+    public interface TouchCallback {
+        void onTouch(int index, float x, float y);
     }
 }
